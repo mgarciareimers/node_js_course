@@ -1,7 +1,9 @@
-const muliply = (base) => {
+const muliply = (base, limit) => {
     let data = `Base ${ base } multiplication table:\n\n`;
 
-    for (let i = 1; i <= 10; i++) {
+    limit = limit === null || limit === undefined ? 10 : limit;
+
+    for (let i = 1; i <= limit; i++) {
         data = data + `${ base } * ${ i } = ${ base * i }\n`;
     }
 
