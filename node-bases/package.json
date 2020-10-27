@@ -1,0 +1,14 @@
+{
+  "name": "bases",
+  "version": "1.0.0",
+  "description": "Calculates the base of the input value by terminal.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Miguel García",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^16.1.0"
+  }
+}
