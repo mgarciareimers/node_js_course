@@ -1,13 +1,15 @@
-const argv = require('yargs').argv;
+const argv = require('./config/yargs').argv;
 
+const todo = require('./utils/todo');
 
-console.log(argv);
-
-const command = arv._[0];
+const command = argv._[0];
 
 switch(command) {
-    case 'create': console.log('Create'); break;
+    case 'create':
+        const result = todo.create(argv.description);
+        console.log(result);
+        break;
+    case 'update': console.log('Update');  break;
     case 'list': console.log('Show tasks'); break;
-    case 'update': console.log('Create');  break;
     default: console.log(`${ command } is an unrecognized command.`); break;
 }
