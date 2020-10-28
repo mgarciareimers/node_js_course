@@ -7,5 +7,4 @@ Execute the command
 
 ````
 npm install
-
 ```
