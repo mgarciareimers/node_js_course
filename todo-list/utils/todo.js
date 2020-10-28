@@ -10,10 +10,19 @@ const saveDatabase = () => {
             throw new Error ('An error occured while saving the data', err);
         }
     });
+}
 
+const loadDatabase = () => {
+    try {
+        todoList = require('../db/data.json');
+    } catch (error) {
+        todoList = [];
+    }
 }
 
 const create = (description) => {
+    loadDatabase();
+
     let todo = { description: description, completed: false };
 
     todoList.push(todo);
