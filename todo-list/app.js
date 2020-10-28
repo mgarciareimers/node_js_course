@@ -1,4 +1,5 @@
 const argv = require('./config/yargs').argv;
+const colors = require('colors');
 
 const todo = require('./utils/todo');
 
@@ -10,6 +11,18 @@ switch(command) {
         console.log(result);
         break;
     case 'update': console.log('Update');  break;
-    case 'list': console.log('Show tasks'); break;
+    case 'list':
+        const list = todo.getTasks();
+
+        console.log('===================================='.rainbow);
+        console.log(`Total tasks: ${ list.length }`);
+        console.log('===================================='.rainbow);
+        list.forEach(task => {
+            console.log(`Task: ${ task.description }`);
+            console.log(`State: ${ task.completed ? 'Completed'.green : 'Pending'.yellow }`);
+            console.log('===================================='.rainbow);
+        });
+
+        break;
     default: console.log(`${ command } is an unrecognized command.`); break;
 }

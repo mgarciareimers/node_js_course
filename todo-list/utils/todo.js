@@ -31,6 +31,13 @@ const create = (description) => {
     return todo;
 }
 
+const getTasks = () => {
+    loadDatabase();
+
+    return todoList;
+}
+
 module.exports = {
     create,
+    getTasks,
 }

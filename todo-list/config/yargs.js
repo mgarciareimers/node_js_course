@@ -22,7 +22,7 @@ const updateOptions = {
 const argv = require('yargs')
     .command('create', 'Creates a todo-list item', createOptions)
     .command('update', 'Updates the state of a todo-list item', updateOptions)
-    //.command('list', 'Shows the todo-list', options)
+    .command('list', 'Shows the todo-list', {})
     .help()
     .argv;
 
