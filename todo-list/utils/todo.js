@@ -12,6 +12,7 @@ const saveDatabase = () => {
     });
 }
 
+// Method that loads the database.
 const loadDatabase = () => {
     try {
         todoList = require('../db/data.json');
@@ -20,6 +21,7 @@ const loadDatabase = () => {
     }
 }
 
+// Method that creates a new task.
 const create = (description) => {
     loadDatabase();
 
@@ -31,13 +33,62 @@ const create = (description) => {
     return todo;
 }
 
+// Method that gets the tasks.
 const getTasks = () => {
     loadDatabase();
 
     return todoList;
 }
 
+// Method that updates a task.
+const update = (description, completed = true) => {
+    loadDatabase();
+    
+    let index = -1;
+
+    for (let i = 0; i < todoList.length; i++) {
+        if (todoList[i].description === description) {
+            index = i;
+            break;
+        }
+    }
+
+    if (index < 0) {
+        return false;
+    }
+
+    todoList[index].completed = completed;
+    saveDatabase();
+
+    return true;
+}
+
+// Method that deletes a task.
+const deleteTask = (description) => {
+    loadDatabase();
+    
+    let index = -1;
+
+    for (let i = 0; i < todoList.length; i++) {
+        if (todoList[i].description === description) {
+            index = i;
+            break;
+        }
+    }
+
+    if (index < 0) {
+        return false;
+    }
+
+    todoList.splice(index, 1);
+    saveDatabase();
+
+    return true;
+}
+
 module.exports = {
     create,
     getTasks,
+    update,
+    deleteTask,
 }

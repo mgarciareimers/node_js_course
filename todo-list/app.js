@@ -10,7 +10,10 @@ switch(command) {
         const result = todo.create(argv.description);
         console.log(result);
         break;
-    case 'update': console.log('Update');  break;
+    case 'update':
+        const updated = todo.update(argv.description, argv.completed === 'true');
+        console.log(updated ? 'The task has been updated' : `No task with the description ${ argv.description } exists`);
+        break;
     case 'list':
         const list = todo.getTasks();
 
@@ -24,5 +27,9 @@ switch(command) {
         });
 
         break;
-    default: console.log(`${ command } is an unrecognized command.`); break;
+    case 'delete':
+        const deleted = todo.deleteTask(argv.description);
+        console.log(deleted ? 'The task has been deleted' : `No task with the description ${ argv.description } exists`);
+        break;
+    default: console.log(`${ command } is an unrecognized command`); break;
 }
