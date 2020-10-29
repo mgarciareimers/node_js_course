@@ -1,3 +1,5 @@
+const place = require('./place/place');
+
 const argv = require('yargs')
     .options({
         address: {
@@ -6,5 +8,6 @@ const argv = require('yargs')
         }
     }).argv;
 
-console.log(argv.address);
+    place.getPlace(argv.address)
+        .then(console.log);
 
