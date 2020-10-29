@@ -14,8 +14,8 @@ const getPlace = async (input) => {
 
     const data = response.data.features[0];
     const address = data.place_name;
-    const lat = data.geometry.coordinates[0];
-    const lng = data.geometry.coordinates[1];
+    const lat = data.geometry.coordinates[1];
+    const lng = data.geometry.coordinates[0];
 
     return {
         address: address,
