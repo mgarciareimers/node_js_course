@@ -2,6 +2,9 @@ const express = require('express');
 
 const app = express();
 
+// Create middleware that shows a static content.
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', (req, res) => {
     const output = {
         name : 'Miguel',
