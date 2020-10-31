@@ -3,7 +3,15 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    const output = {
+        name : 'Miguel',
+        url: req.url,
+    }
+    res.send(output);
 });
 
-app.listen(3000);
+app.get('/data', (req, res) => {
+    res.send('Hello data!');
+});
+
+app.listen(3000, () => console.log('Running PORT 3000'));
