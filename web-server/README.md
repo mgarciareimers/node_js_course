@@ -1,1 +1,5 @@
 ## Webser app
+
+```
+npm start
+```
