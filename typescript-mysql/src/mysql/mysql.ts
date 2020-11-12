@@ -26,7 +26,6 @@ export default class MySQL {
             }
 
             this.connected = true;
-            console.log('DB online');
         });
     }
 
@@ -36,5 +35,16 @@ export default class MySQL {
         }
 
         return this._instance;
+    }
+
+    public static execQuery(query : string, callback : Function) {
+        this.instance.connection.query(query, (error, results: Object [], fields: any) => {
+            if (error) {
+                console.log(error);
+                return callback(error, null);
+            }
+
+            callback(null, results);
+        });
     }
 }
